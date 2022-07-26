@@ -1,13 +1,27 @@
 // A program for an HTML operated calculator!
 
-function operate(a, operator, b) {
+let displayValue = 0;
+
+const numBtn = document.querySelectorAll('button');
+const disp = document.getElementById('output');
+
+
+
+numBtn.forEach((button) => {
+    button.addEventListener('click', () => {
+        disp.textContent = button.id;
+    });
+}); 
+
+
+function operate(a, operator, b) { //chooses the correct function to call when user presses "="
     if(operator === '+') {
         return add(a, b);
     } else if(operator === '-') {
         return subtract(a, b);
-    } else if(operator === '*') {
+    } else if(operator === 'x') {
         return multiply(a, b);
-    } else if(operator === '/') {
+    } else if(operator === '&#xF7;') {
         return divide(a, b);
     } else {
         console.log('Please enter a valid expression');

@@ -6,4 +6,56 @@
     height: 400px;
     background-color: lightgrey;
     padding: 8px;
+    border-style: solid;
+    border-radius: 8px;
 }
+
+#display {
+    text-align: right;
+    background-color: lightblue;
+    padding: 8px;
+    color: white;
+    height: 75px;
+    display: flex;
+    justify-content: right;
+    border-radius: 8px;
+    border-style: solid;
+    border-color: black;
+    border-width: thin;
+  }
+  
+  #output {
+    font-size: 28px;
+    font-family: monospace;
+  }
+  
+  #clrdltcontainer {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    padding: 10px;
+  }
+  
+  .clrdltbtn {
+    width: 50%;
+  }
+  
+  #clr {
+    margin-right: 5px;
+  }
+  
+  #dlt {
+    margin-left: 5px;
+  }
+  
+  #digitscontainer {
+    display: flex;
+    height: 265px;
+    width: 300px;
+    flex-wrap: wrap;
+  }
+  
+  .digits {
+    height: 25%;
+    width: 25%;
+  }
