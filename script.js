@@ -2,14 +2,24 @@
 
 let displayValue = 0;
 
-const numBtn = document.querySelectorAll('button');
+const numBtn = document.querySelectorAll('.digits');
 const disp = document.getElementById('output');
+const clrBtn = document.getElementById('clr');
+const dltBtn = document.getElementById('dlt');
 
 
+clrBtn.addEventListener('click', () => {
+    disp.textContent = "0";
+    displayValue = 0;
+});
 
 numBtn.forEach((button) => {
     button.addEventListener('click', () => {
-        disp.textContent = button.id;
+        if(displayValue === 0) {
+            displayValue = '';
+        };
+        displayValue += button.id;
+        disp.textContent = displayValue;
     });
 }); 
 
