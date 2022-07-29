@@ -55,7 +55,7 @@
     flex-wrap: wrap;
   }
   
-  .digits, #equals {
+  .digits, #equals, .opBtn {
     height: 25%;
     width: 25%;
   }
