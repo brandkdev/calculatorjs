@@ -7,8 +7,7 @@ const disp = document.getElementById('output');
 const clrBtn = document.getElementById('clr');
 const dltBtn = document.getElementById('dlt');
 const eqBtn = document.getElementById('equals');
-const opBtn = document.querySelectorAll('.opBtn');
-
+const opBtn = document.querySelectorAll('.opBtn')
 
 clrBtn.addEventListener('click', () => {
     disp.textContent = "0";
@@ -25,49 +24,49 @@ numBtn.forEach((button) => {
     });
 });
 
-eqBtn.addEventListener('click', evalEqString)
+eqBtn.addEventListener('click', evalEqString);
 
 function evalEqString() {
-    let operator;
-    if(displayValue.includes('+')) {
+  let operator;
+  if(displayValue.includes('+')) {
         operator = '+';
-    } else if(displayValue.includes('-')) {
+  } else if(displayValue.includes('-')) {
         operator = '-';
-    } else if(displayValue.includes('x')) {
+  } else if(displayValue.includes('x')) {
         operator = 'x';
-    } else if(displayValue.includes('÷')) {
+  } else if(displayValue.includes('÷')) {
         operator = '÷';
-    } else {
+  } else {
         displayValue = '0';
-    }
-    let eval = displayValue.split(/[+|\-|x|÷]+/);
-    let firstVal = eval[0];
-    let secondVal = eval[1];
-    displayValue = operate(firstVal, operator, secondVal);
-    disp.textContent = displayValue;
+  }
+  let eval = displayValue.split(/[+|\-|x|÷]+/);
+  let firstVal = eval[0];
+  let secondVal = eval[1];
+  displayValue = operate(firstVal, operator, secondVal);
+  disp.textContent = displayValue;
 }
 
 opBtn.forEach((button) => {
-    button.addEventListener('click', () => {
-        if(displayValue.includes('+') || displayValue.includes('-') || displayValue.includes('x' || displayValue.includes('÷'))) {
-            evalEqString();
-            displayValue += button.id;
-            disp.textContent = displayValue;
-        } else {
-            displayValue += button.id;
-            disp.textContent = displayValue;
-        }
-    });
+  button.addEventListener('click', () => {
+    if(displayValue.includes('+') || displayValue.includes('-') || displayValue.includes('x') || displayValue.includes('÷')) {
+      evalEqString();
+      displayValue +=button.id;
+      disp.textContent = displayValue;
+    } else {
+      displayValue +=button.id;
+      disp.textContent = displayValue;
+    }
+  });
 });
 
 dltBtn.addEventListener('click', () => {
-    if((displayValue == 0) || (displayValue.length == 1)) {
-        displayValue = '0';
-        disp.textContent = displayValue;
-    } else {
-        displayValue = `${displayValue}`.slice(0, -1);
-        disp.textContent = displayValue;
-    }
+  if((displayValue == 0) || (displayValue.length == 1)) {
+    displayValue = '0';
+    disp.textContent = displayValue;
+  } else {
+    displayValue = `${displayValue}`.slice(0, -1);
+    disp.textContent = displayValue;
+  }
 });
 
 function operate(a, operator, b) { //chooses the correct function to call when user presses "="
@@ -77,33 +76,35 @@ function operate(a, operator, b) { //chooses the correct function to call when u
         return subtract(a, b);
     } else if(operator === 'x') {
         return multiply(a, b);
-    } else if(operator === '÷') {
+    } else if(operator === '÷' && b !== '0') {
         return divide(a, b);
+    } else if(operator === '÷' && b === '0') {
+        return "really?";
     } else {
-        console.log('Please enter a valid expression');
+        return '0';
     }
 }
 
 function add(a, b) {
-    aInt = parseInt(a);
-    bInt = parseInt(b);
+    aInt = parseFloat(a);
+    bInt = parseFloat(b);
     return aInt + bInt;
 }
 
 function subtract(a, b) {
-    aInt = parseInt(a);
-    bInt = parseInt(b);
+    aInt = parseFloat(a);
+    bInt = parseFloat(b);
     return aInt - bInt;
 }
 
 function multiply(a, b) {
-    aInt = parseInt(a);
-    bInt = parseInt(b);
+    aInt = parseFloat(a);
+    bInt = parseFloat(b);
     return aInt * bInt;
 }
 
 function divide(a, b) {
-    aInt = parseInt(a);
-    bInt = parseInt(b);
+    aInt = parseFloat(a);
+    bInt = parseFloat(b);
     return aInt / bInt;
 }
